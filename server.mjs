@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 const app = express()
 const port = process.env.PORT || 3000;
 
@@ -11,9 +12,9 @@ app.get('/about', (req, res) => {
     console.log("requested ip: ", req.ip);
     res.send('about!')
 })
-// app.use('/', express.static())
-
-
+const __dirname = path.resolve();
+app.use('/', express.static(path.join(__dirname , '/weather-app/build')));
+app.use('*', express.static(path.join(__dirname , '/weather-app/build')));
 
 
 app.listen(port, () => {
