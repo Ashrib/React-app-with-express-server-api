@@ -23,15 +23,16 @@
   align-items: center;
   background-color: yellowgreen;
 }
-/* .user-inp>div{
-  height: 100%;
-} */
-.user-inp>div>input{
-  padding: 10px 20px;
+.user-inp>div{
+  height: auto;
 }
-/* .user-inp>div>button{
-  height: 100%;
-} */
+.user-inp>div>form>input{
+  padding: 10px 20px;
+  /* height: 40px; */
+}
+.user-inp>div>form>button{
+  height: 40px;
+}
 .data-container{
   display: flex;
   justify-content: center;
@@ -40,6 +41,7 @@
 .data-box{
   margin-top: 50px;
   width: 500px;
+  min-width: 280px;
   border: 1px solid white;
 }
 .data-box>h3{
