@@ -2,22 +2,25 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 
-const app = express()
+const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/weather', (req, res) => {
-    console.log("requested ip: ", req.ip);
-    res.send({
-        temp: 30,
-        humidity: 72,
-        serverTime: new Date().toString()
-    });
+app.use(cors());
+
+app.get('/weather/:cityName', (req, res) => {
+  console.log("request ip: ", req.ip);
+  console.log(req.params.cityName)
+  res.send({
+    city:req.params.cityName,
+    temp: "30°C",
+    wind:"7 km/h",
+    humidity: "20%",
+    minimum: "25°C",
+    maximum: "32°C" ,
+    weather:"sunny"
+  });
 })
 
-app.get('/about', (req, res) => {
-    console.log("requested ip: ", req.ip);
-    res.send('about!')
-})
 const __dirname = path.resolve();
 app.use('/', express.static(path.join(__dirname , '/weather-app/build')));
 app.use('*', express.static(path.join(__dirname , '/weather-app/build')));
